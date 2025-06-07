@@ -49,6 +49,7 @@ class CryptoActivity : AppCompatActivity() {
         }
     }
 
+
     companion object {
 
         fun newIntent(context: Context) = Intent(context, CryptoActivity::class.java)
