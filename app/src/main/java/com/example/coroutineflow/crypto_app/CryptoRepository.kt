@@ -17,7 +17,6 @@ object CryptoRepository {
             delay(3000)
             generateCurrencyList()
             emit(currencyList.toList())
-            delay(3000)
         }
     }
 
