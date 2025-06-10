@@ -25,15 +25,13 @@ class CryptoViewModel : ViewModel() {
     val state: Flow<State> = repository.getCurrencyList()
         .filter { it.isNotEmpty() }
         .map { State.Content(currencyList = it) as State }
-        .onStart {
-            Log.d("CryptoViewModel", "onStart")
-            emit(State.Loading)
-        }
-        .onEach {
-            Log.d("CryptoViewModel", "onEach")
-            }
-        .onCompletion {
-            Log.d("CryptoViewModel", "onCompletion")
-        }
+        .onStart { emit(State.Loading) }
 
+
+
+    fun refreshList() {
+        viewModelScope.launch {
+            repository.refreshList()
+        }
+    }
 }
